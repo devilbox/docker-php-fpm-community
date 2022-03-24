@@ -9,5 +9,4 @@ ARCH="${2}"
 VERSION="${3}"
 TAG="${4}"
 
-
 docker run --rm --platform "${ARCH}" --entrypoint=php "${IMAGE}:${TAG}" -v | grep "${VERSION}"
