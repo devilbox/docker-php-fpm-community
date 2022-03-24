@@ -7,6 +7,11 @@ set -o pipefail
 # Current directory
 CWD="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
 
+if ! command -v perl >/dev/null 2>&1; then
+	echo "Error, perl binary not found, but required."
+	exit 1
+fi
+
 
 #---------------------------------------------------------------------------------------------------
 # Update main README.md

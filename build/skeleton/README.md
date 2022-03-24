@@ -1,5 +1,9 @@
 # __PROJECT__
 
+[![build](https://github.com/devilbox/docker-php-fpm-community/workflows/__PROJECT___build/badge.svg)](https://github.com/devilbox/docker-php-fpm-community/actions?workflow=__PROJECT___build)
+[![nightly](https://github.com/devilbox/docker-php-fpm-community/workflows/__PROJECT___nightly/badge.svg)](https://github.com/devilbox/docker-php-fpm-community/actions?workflow=__PROJECT___nightly)
+
+
 Add your project description here
 
 

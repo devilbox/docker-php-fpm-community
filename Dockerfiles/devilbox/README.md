@@ -1,5 +1,9 @@
 # devilbox
 
+[![build](https://github.com/devilbox/docker-php-fpm-community/workflows/devilbox_build/badge.svg)](https://github.com/devilbox/docker-php-fpm-community/actions?workflow=devilbox_build)
+[![nightly](https://github.com/devilbox/docker-php-fpm-community/workflows/devilbox_nightly/badge.svg)](https://github.com/devilbox/docker-php-fpm-community/actions?workflow=devilbox_nightly)
+
+
 Add your project description here
 
 | Version                | File                                       | Architecture            | Docker tag |
