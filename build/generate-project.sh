@@ -108,6 +108,18 @@ sed -i'' "s/__PROJECT__/${PROJECT}/g" "${CWD}/../Dockerfiles/${PROJECT}/README.m
 
 
 #---------------------------------------------------------------------------------------------------
+# Generate project .credits file
+#---------------------------------------------------------------------------------------------------
+
+{
+	echo "project=${PROJECT}"
+	echo "github=${GITHUB_NAME}"
+	echo "name=${MAINTAINER_NAME}"
+	echo "mail=${MAINTAINER_MAIL}"
+} > "${CWD}/../Dockerfiles/${PROJECT}/.credits"
+
+
+#---------------------------------------------------------------------------------------------------
 # Generate GitHub Actions
 #---------------------------------------------------------------------------------------------------
 
@@ -126,12 +138,6 @@ sed -i'' "s/__PROJECT__/${PROJECT}/g" "${CWD}/../.github/workflows/${PROJECT}_ac
 sed -i'' "s/__PROJECT__/${PROJECT}/g" "${CWD}/../.github/workflows/${PROJECT}_action_pull_request.yml"
 sed -i'' "s/__PROJECT__/${PROJECT}/g" "${CWD}/../.github/workflows/${PROJECT}_action_schedule.yml"
 sed -i'' "s/__PROJECT__/${PROJECT}/g" "${CWD}/../.github/workflows/${PROJECT}_params.yml"
-
-
-#---------------------------------------------------------------------------------------------------
-# Update main README.md
-#---------------------------------------------------------------------------------------------------
-# TODO
 
 
 #---------------------------------------------------------------------------------------------------
