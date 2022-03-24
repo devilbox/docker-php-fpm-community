@@ -12,8 +12,8 @@ CWD="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
 # Update main README.md
 #---------------------------------------------------------------------------------------------------
 TABLE=""
-TABLE="$( printf "${TABLE}\n%s" "| Project                       | Author                                  | build                                |" )"
-TABLE="$( printf "${TABLE}\n%s" "|-------------------------------|-----------------------------------------|--------------------------------------|" )"
+TABLE="$( printf "${TABLE}\n%s" "| Project                                 | Author                                            | build                                          |" )"
+TABLE="$( printf "${TABLE}\n%s" "|-----------------------------------------|---------------------------------------------------|------------------------------------------------|" )"
 
 LINKS=""
 
@@ -26,16 +26,17 @@ for d in "${CWD}/../Dockerfiles/"*; do
 
 	# Build Table
 	LINE=""
-	LINE="${LINE}$( printf "| %-30s"  "[\`${CREDIT_PROJECT}\`]" )"
-	LINE="${LINE}$( printf "| %-40s"  "[${CREDIT_GITHUB}] (${CREDIT_NAME})" )"
-	LINE="${LINE}$( printf "| %-36s"  "![${CREDIT_PROJECT}_build]" )"
+	LINE="${LINE}$( printf "| %-40s"  ":file_folder: [${CREDIT_PROJECT}/]" )"
+	LINE="${LINE}$( printf "| %-50s"  ":octocat: [${CREDIT_GITHUB}] (${CREDIT_NAME})" )"
+	LINE="${LINE}$( printf "| %-46s"  "![${CREDIT_PROJECT}_build] ![${CREDIT_PROJECT}_nightly]" )"
 	LINE="${LINE} |"
 	TABLE="$( printf "${TABLE}\n%s" "${LINE}" )"
 
 	# Build Table Links
-	LINKS="$( printf "${LINKS}\n%s" "[\`${CREDIT_PROJECT}\`]: Dockerfiles/${CREDIT_PROJECT}" )"
+	LINKS="$( printf "${LINKS}\n%s" "[${CREDIT_PROJECT}/]: Dockerfiles/${CREDIT_PROJECT}" )"
 	LINKS="$( printf "${LINKS}\n%s" "[${CREDIT_GITHUB}]: https://github.com/${CREDIT_GITHUB}" )"
 	LINKS="$( printf "${LINKS}\n%s" "[${CREDIT_PROJECT}_build]: https://github.com/devilbox/docker-php-fpm-community/workflows/${CREDIT_PROJECT}_build/badge.svg" )"
+	LINKS="$( printf "${LINKS}\n%s" "[${CREDIT_PROJECT}_nightly]: https://github.com/devilbox/docker-php-fpm-community/workflows/${CREDIT_PROJECT}_nightly/badge.svg" )"
 done
 
 cd "${CWD}"
