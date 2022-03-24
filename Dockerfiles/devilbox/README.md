@@ -4,7 +4,15 @@
 [![nightly](https://github.com/devilbox/docker-php-fpm-community/workflows/devilbox_nightly/badge.svg)](https://github.com/devilbox/docker-php-fpm-community/actions?workflow=devilbox_nightly)
 
 
-Add your project description here
+This is the Devilbox community reference image. Feel free to enhance it or use it as reference for creating your own images.
+
+
+## Maintainer
+
+* :octocat: [cytopia](https://github.com/cytopia) (cytopia)
+
+
+## :whale: Docker images
 
 | Version                | File                                       | Architecture            | Docker tag |
 |------------------------|--------------------------------------------|-------------------------|------------|

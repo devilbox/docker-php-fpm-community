@@ -5,7 +5,7 @@ set -u
 set -o pipefail
 
 # Current directory
-CWD="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
+CWD="$(cd -P -- "$(dirname -- "$0")" && pwd -P)/../"
 
 if ! command -v perl >/dev/null 2>&1; then
 	echo "Error, perl binary not found, but required."
@@ -17,8 +17,8 @@ fi
 # Update main README.md
 #---------------------------------------------------------------------------------------------------
 TABLE=""
-TABLE="$( printf "${TABLE}\n%s" "| Project                                 | Author                                            | build                                          |" )"
-TABLE="$( printf "${TABLE}\n%s" "|-----------------------------------------|---------------------------------------------------|------------------------------------------------|" )"
+TABLE="$( printf "${TABLE}\n%s" "| Project                                 | Author                                            | build                                         | Architecture                                   |" )"
+TABLE="$( printf "${TABLE}\n%s" "|-----------------------------------------|---------------------------------------------------|-----------------------------------------------|------------------------------------------------|" )"
 
 LINKS=""
 
@@ -33,7 +33,8 @@ for d in "${CWD}/../Dockerfiles/"*; do
 	LINE=""
 	LINE="${LINE}$( printf "| %-40s"  ":file_folder: [${CREDIT_PROJECT}/]" )"
 	LINE="${LINE}$( printf "| %-50s"  ":octocat: [${CREDIT_GITHUB}] (${CREDIT_NAME})" )"
-	LINE="${LINE}$( printf "| %-46s"  "![${CREDIT_PROJECT}_build] ![${CREDIT_PROJECT}_nightly]" )"
+	LINE="${LINE}$( printf "| %-46s"  "![${CREDIT_PROJECT}_build]<br/>![${CREDIT_PROJECT}_nightly]" )"
+	LINE="${LINE}$( printf "| %-46s"  ":computer: amd64<br/>:computer: arm64" )"
 	LINE="${LINE} |"
 	TABLE="$( printf "${TABLE}\n%s" "${LINE}" )"
 

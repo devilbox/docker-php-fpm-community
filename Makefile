@@ -64,14 +64,32 @@ help:
 # -------------------------------------------------------------------------------------------------
 
 # Append additional target to lint
+lint: lint-actions
+lint: lint-codeowners
 lint: lint-readme
+
+.PHONY: lint-actions
+lint-actions:
+	@echo "################################################################################"
+	@echo "# Lint GitHub Actions"
+	@echo "################################################################################"
+	./build/bin/update-actions.sh
+	git diff --quiet || { echo "Build Changes"; git diff; git status; false; }
+
+.PHONY: lint-codeowners
+lint-codeowners:
+	@echo "################################################################################"
+	@echo "# Lint CODEOWNERS"
+	@echo "################################################################################"
+	./build/bin/update-codeowners.sh
+	git diff --quiet || { echo "Build Changes"; git diff; git status; false; }
 
 .PHONY: lint-readme
 lint-readme:
 	@echo "################################################################################"
-	@echo "# Lint projects in README.md"
+	@echo "# Lint project README.md"
 	@echo "################################################################################"
-	./build/update-readme.sh
+	./build/bin/update-readme.sh
 	git diff --quiet || { echo "Build Changes"; git diff; git status; false; }
 
 
@@ -104,3 +122,12 @@ manifest-push: docker-manifest-push
 .PHONY: test
 test:
 	./tests/test.sh $(IMAGE) $(ARCH) $(VERSION) $(DOCKER_TAG)
+
+
+
+# -------------------------------------------------------------------------------------------------
+#  Create prokject
+# -------------------------------------------------------------------------------------------------
+.PHONY: create-project
+create-project:
+	./build/generate-project.sh
