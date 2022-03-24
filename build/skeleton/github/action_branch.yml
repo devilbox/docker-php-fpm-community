@@ -30,7 +30,7 @@ jobs:
 
   # (2/2) Build
   docker:
-    needs: [__PROJECT___params]
+    needs: [params]
     uses: devilbox/github-actions/.github/workflows/docker-name-version-flavour-arch.yml@master
     with:
       enabled: true
