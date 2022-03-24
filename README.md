@@ -5,6 +5,8 @@
 [![Discourse](https://img.shields.io/discourse/https/devilbox.discourse.group/status.svg?colorB=%234CB697)](https://devilbox.discourse.group)
 [![License](https://img.shields.io/badge/license-MIT-%233DA639.svg)](https://opensource.org/licenses/MIT)
 
+**Available Architectures:**  `amd64`, `arm64`
+
 Devilbox PHP-FPM community maintained docker images.
 
 | Docker Hub | Upstream Project |
@@ -14,12 +16,12 @@ Devilbox PHP-FPM community maintained docker images.
 
 ## Projects
 
-Find the currently available projects here.
+Find the currently available projects here. Click on the project for corresponding docker tags and more details.
 
 <!-- PROJECTS_START -->
-| Project                                 | Author                                            | build                                          |
-|-----------------------------------------|---------------------------------------------------|------------------------------------------------|
-| :file_folder: [devilbox/]               | :octocat: [cytopia] (cytopia)                     | ![devilbox_build] ![devilbox_nightly]          |
+| Project                                 | Author                                            | build                                         | Architecture                                   |
+|-----------------------------------------|---------------------------------------------------|-----------------------------------------------|------------------------------------------------|
+| :file_folder: [devilbox/]               | :octocat: [cytopia] (cytopia)                     | ![devilbox_build]<br/>![devilbox_nightly]     | :computer: amd64<br/>:computer: arm64          |
 
 
 [devilbox/]: Dockerfiles/devilbox
@@ -27,6 +29,18 @@ Find the currently available projects here.
 [devilbox_build]: https://github.com/devilbox/docker-php-fpm-community/workflows/devilbox_build/badge.svg
 [devilbox_nightly]: https://github.com/devilbox/docker-php-fpm-community/workflows/devilbox_nightly/badge.svg
 <!-- PROJECTS_END -->
+
+
+## :computer: Build
+
+You can build the images locally via:
+```shell
+# Build PHP 5.2 of devilbox project
+make build VERSION=5.5 FLAVOUR=devilbox
+
+# Build PHP 5.2 of devilbox project (force arm64 arch)
+make build VERSION=5.5 FLAVOUR=devilbox ARCH=linux/arm64
+```
 
 
 ## :octocat: Contributing
