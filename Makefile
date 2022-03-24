@@ -59,6 +59,21 @@ help:
 	@echo "test [ARCH=...]                          Test built Docker image"
 	@echo
 
+# -------------------------------------------------------------------------------------------------
+#  Overwrite Targets
+# -------------------------------------------------------------------------------------------------
+
+# Append additional target to lint
+lint: lint-readme
+
+.PHONY: lint-readme
+lint-readme:
+	@echo "################################################################################"
+	@echo "# Lint projects in README.md"
+	@echo "################################################################################"
+	./build/update-readme.sh
+	git diff --quiet || { echo "Build Changes"; git diff; git status; false; }
+
 
 # -------------------------------------------------------------------------------------------------
 #  Docker Targets
