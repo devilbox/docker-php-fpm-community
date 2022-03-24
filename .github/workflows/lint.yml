@@ -20,3 +20,24 @@ on:
 jobs:
   lint:
     uses: devilbox/github-actions/.github/workflows/lint-generic.yml@master
+
+  lint_custom:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint GitHub Actions
+        uses: cytopia/shell-command-retry-action@v0.1.2
+        with:
+          command: |
+            make lint-actions
+
+      - name: Lint GitHub CODEOWNERS
+        uses: cytopia/shell-command-retry-action@v0.1.2
+        with:
+          command: |
+            make lint-codeowners
+
+      - name: Lint README.md
+        uses: cytopia/shell-command-retry-action@v0.1.2
+        with:
+          command: |
+            make lint-readme
