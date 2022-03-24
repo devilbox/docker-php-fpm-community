@@ -103,4 +103,4 @@ manifest-push: docker-manifest-push
 # -------------------------------------------------------------------------------------------------
 .PHONY: test
 test:
-	./tests/test.sh
+	./tests/test.sh $(IMAGE) $(ARCH) $(VERSION) $(DOCKER_TAG)
