@@ -104,7 +104,9 @@ done
 ### Copy README.md
 ###
 cp "${CWD}/skeleton/README.md" "${CWD}/../Dockerfiles/${PROJECT}/README.md"
-sed -i'' "s/__PROJECT__/${PROJECT}/g" "${CWD}/../Dockerfiles/${PROJECT}/README.md"
+sed -i'' "s/__PROJECT__/${PROJECT}/g"                 "${CWD}/../Dockerfiles/${PROJECT}/README.md"
+sed -i'' "s/__GITHUB_NAME__/${GITHUB_NAME}/g"         "${CWD}/../Dockerfiles/${PROJECT}/README.md"
+sed -i'' "s/__MAINTAINER_NAME__/${MAINTAINER_NAME}/g" "${CWD}/../Dockerfiles/${PROJECT}/README.md"
 
 
 #---------------------------------------------------------------------------------------------------

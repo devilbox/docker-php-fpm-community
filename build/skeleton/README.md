@@ -6,6 +6,12 @@
 
 Add your project description here
 
+## Maintainer
+
+* :octocat: [__GITHUB_NAME__](https://github.com/__GITHUB_NAME__) (__MAINTAINER_NAME__)
+
+
+## :whale: Docker images
 
 | Version                | File                                       | Architecture            | Docker tag |
 |------------------------|--------------------------------------------|-------------------------|------------|

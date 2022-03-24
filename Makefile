@@ -104,3 +104,12 @@ manifest-push: docker-manifest-push
 .PHONY: test
 test:
 	./tests/test.sh $(IMAGE) $(ARCH) $(VERSION) $(DOCKER_TAG)
+
+
+
+# -------------------------------------------------------------------------------------------------
+#  Create prokject
+# -------------------------------------------------------------------------------------------------
+.PHONY: create-project
+create-project:
+	./build/generate-project.sh && ./build/update-readme.sh

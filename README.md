@@ -30,6 +30,11 @@ Find the currently available projects here. Click on the project for correspondi
 [devilbox_nightly]: https://github.com/devilbox/docker-php-fpm-community/workflows/devilbox_nightly/badge.svg
 <!-- PROJECTS_END -->
 
+You can create your own project via:
+```shell
+make create-project
+```
+
 
 ## :computer: Build
 
