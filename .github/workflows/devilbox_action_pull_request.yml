@@ -16,6 +16,7 @@ name: devilbox_build
 on:
   pull_request:
     paths:
+      - 'tests/**'
       - '.github/workflows/devilbox*.yml'
       - '!.github/workflows/devilbox_schedule.yml'
       - 'Dockerfiles/devilbox/**'

@@ -16,6 +16,7 @@ name: __PROJECT___build
 on:
   pull_request:
     paths:
+      - 'tests/**'
       - '.github/workflows/__PROJECT__*.yml'
       - '!.github/workflows/__PROJECT___schedule.yml'
       - 'Dockerfiles/__PROJECT__/**'

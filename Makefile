@@ -103,4 +103,4 @@ manifest-push: docker-manifest-push
 # -------------------------------------------------------------------------------------------------
 .PHONY: test
 test:
-	@echo "Not implemented"
+	./tests/test.sh
