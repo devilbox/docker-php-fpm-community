@@ -122,33 +122,9 @@ sed -i'' "s/__MAINTAINER_NAME__/${MAINTAINER_NAME}/g" "${CWD}/../Dockerfiles/${P
 
 
 #---------------------------------------------------------------------------------------------------
-# Generate GitHub Actions
+# Update project files
 #---------------------------------------------------------------------------------------------------
 
-###
-### Copy GitHub Actions
-###
-cp "${CWD}/skeleton/github/action_branch.yml"       "${CWD}/../.github/workflows/${PROJECT}_action_branch.yml"
-cp "${CWD}/skeleton/github/action_pull_request.yml" "${CWD}/../.github/workflows/${PROJECT}_action_pull_request.yml"
-cp "${CWD}/skeleton/github/action_schedule.yml"     "${CWD}/../.github/workflows/${PROJECT}_action_schedule.yml"
-cp "${CWD}/skeleton/github/params.yml"              "${CWD}/../.github/workflows/${PROJECT}_params.yml"
-
-###
-### Set placeholder in GitHub Actions
-###
-sed -i'' "s/__PROJECT__/${PROJECT}/g" "${CWD}/../.github/workflows/${PROJECT}_action_branch.yml"
-sed -i'' "s/__PROJECT__/${PROJECT}/g" "${CWD}/../.github/workflows/${PROJECT}_action_pull_request.yml"
-sed -i'' "s/__PROJECT__/${PROJECT}/g" "${CWD}/../.github/workflows/${PROJECT}_action_schedule.yml"
-sed -i'' "s/__PROJECT__/${PROJECT}/g" "${CWD}/../.github/workflows/${PROJECT}_params.yml"
-
-
-#---------------------------------------------------------------------------------------------------
-# Update CODEOWNERS
-#---------------------------------------------------------------------------------------------------
-
-###
-### Adjust Code Owners
-###
-if ! grep "^/Dockerfiles/${PROJECT}/" "${CWD}/../.github/CODEOWNERS" >/dev/null 2>&1; then
-	printf "%-30s @%s\n" "/Dockerfiles/${PROJECT}/" "${GITHUB_NAME}" >> "${CWD}/../.github/CODEOWNERS"
-fi
+"${CWD}/bin/update-actions.sh"
+"${CWD}/bin/update-codeowners.sh"
+"${CWD}/bin/update-readme.sh"
