@@ -1,35 +1,29 @@
 ---
 
-# filename: __PROJECT___action_pull_request.yml
-# job-name: __PROJECT___build
+# filename: devilbox_action_schedule.yml
+# job-name: devilbox_nightly
 
 
 # -------------------------------------------------------------------------------------------------
 # Job Name
 # -------------------------------------------------------------------------------------------------
-name: __PROJECT___build
+name: devilbox_nightly
 
 
 # -------------------------------------------------------------------------------------------------
 # When to run
 # -------------------------------------------------------------------------------------------------
 on:
-  pull_request:
-    paths:
-      - 'tests/**'
-      - '.github/workflows/__PROJECT__*.yml'
-      - '!.github/workflows/__PROJECT___schedule.yml'
-      - 'Dockerfiles/__PROJECT__/**'
-      - '!Dockerfiles/__PROJECT__/README.md'
+  # Runs daily
+  schedule:
+    - cron: '0 0 * * *'
 
 
 jobs:
 
   # (1/2) Determine repository params
   params:
-    uses: ./.github/workflows/__PROJECT___params.yml
-    # Only run for forks (contributor)
-    if: github.event.pull_request.head.repo.fork
+    uses: ./.github/workflows/devilbox_params.yml
 
   # (2/2) Build
   docker:
@@ -37,9 +31,9 @@ jobs:
     uses: devilbox/github-actions/.github/workflows/docker-name-version-flavour-arch.yml@master
     with:
       enabled: true
-      can_deploy: false
+      can_deploy: true
       matrix: ${{ needs.params.outputs.matrix }}
       refs: ${{ needs.params.outputs.refs }}
     secrets:
-      dockerhub_username: ""
-      dockerhub_password: ""
+      dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+      dockerhub_password: ${{ secrets.DOCKERHUB_PASSWORD }}

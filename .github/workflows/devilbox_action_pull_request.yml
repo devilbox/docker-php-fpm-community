@@ -1,13 +1,13 @@
 ---
 
-# filename: __PROJECT___action_pull_request.yml
-# job-name: __PROJECT___build
+# filename: devilbox_action_pull_request.yml
+# job-name: devilbox_build
 
 
 # -------------------------------------------------------------------------------------------------
 # Job Name
 # -------------------------------------------------------------------------------------------------
-name: __PROJECT___build
+name: devilbox_build
 
 
 # -------------------------------------------------------------------------------------------------
@@ -17,17 +17,17 @@ on:
   pull_request:
     paths:
       - 'tests/**'
-      - '.github/workflows/__PROJECT__*.yml'
-      - '!.github/workflows/__PROJECT___schedule.yml'
-      - 'Dockerfiles/__PROJECT__/**'
-      - '!Dockerfiles/__PROJECT__/README.md'
+      - '.github/workflows/devilbox*.yml'
+      - '!.github/workflows/devilbox_schedule.yml'
+      - 'Dockerfiles/devilbox/**'
+      - '!Dockerfiles/devilbox/README.md'
 
 
 jobs:
 
   # (1/2) Determine repository params
   params:
-    uses: ./.github/workflows/__PROJECT___params.yml
+    uses: ./.github/workflows/devilbox_params.yml
     # Only run for forks (contributor)
     if: github.event.pull_request.head.repo.fork
 

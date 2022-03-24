@@ -1,35 +1,33 @@
 ---
 
-# filename: __PROJECT___action_pull_request.yml
-# job-name: __PROJECT___build
-
+# filename: devilbox_action_branch.yml
+# job-name: devilbox_build
+#
 
 # -------------------------------------------------------------------------------------------------
 # Job Name
 # -------------------------------------------------------------------------------------------------
-name: __PROJECT___build
+name: devilbox_build
 
 
 # -------------------------------------------------------------------------------------------------
 # When to run
 # -------------------------------------------------------------------------------------------------
 on:
-  pull_request:
+  push:
     paths:
       - 'tests/**'
-      - '.github/workflows/__PROJECT__*.yml'
-      - '!.github/workflows/__PROJECT___schedule.yml'
-      - 'Dockerfiles/__PROJECT__/**'
-      - '!Dockerfiles/__PROJECT__/README.md'
+      - '.github/workflows/devilbox*.yml'
+      - '!.github/workflows/devilbox_schedule.yml'
+      - 'Dockerfiles/devilbox/**'
+      - '!Dockerfiles/devilbox/README.md'
 
 
 jobs:
 
   # (1/2) Determine repository params
   params:
-    uses: ./.github/workflows/__PROJECT___params.yml
-    # Only run for forks (contributor)
-    if: github.event.pull_request.head.repo.fork
+    uses: ./.github/workflows/devilbox_params.yml
 
   # (2/2) Build
   docker:
@@ -37,9 +35,9 @@ jobs:
     uses: devilbox/github-actions/.github/workflows/docker-name-version-flavour-arch.yml@master
     with:
       enabled: true
-      can_deploy: false
+      can_deploy: ${{ github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/') || startsWith(github.ref, 'refs/heads/release-') }}
       matrix: ${{ needs.params.outputs.matrix }}
       refs: ${{ needs.params.outputs.refs }}
     secrets:
-      dockerhub_username: ""
-      dockerhub_password: ""
+      dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+      dockerhub_password: ${{ secrets.DOCKERHUB_PASSWORD }}

@@ -16,6 +16,7 @@ name: __PROJECT___build
 on:
   push:
     paths:
+      - 'tests/**'
       - '.github/workflows/__PROJECT__*.yml'
       - '!.github/workflows/__PROJECT___schedule.yml'
       - 'Dockerfiles/__PROJECT__/**'
@@ -30,7 +31,7 @@ jobs:
 
   # (2/2) Build
   docker:
-    needs: [__PROJECT___params]
+    needs: [params]
     uses: devilbox/github-actions/.github/workflows/docker-name-version-flavour-arch.yml@master
     with:
       enabled: true

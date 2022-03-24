@@ -27,21 +27,13 @@ TAG        = latest
 NAME       = PHP
 #VERSION    = X.X
 IMAGE      = devilbox/php-fpm-community
-FLAVOUR    = default
+FLAVOUR    = devilbox
 FILE       = Dockerfile-$(VERSION)
 DIR        = Dockerfiles/$(FLAVOUR)
 ifeq ($(strip $(TAG)),latest)
-	ifeq ($(strip $(FLAVOUR)),default)
-		DOCKER_TAG = $(VERSION)
-	else
-		DOCKER_TAG = $(VERSION)-$(FLAVOUR)
-	endif
+	DOCKER_TAG = $(VERSION)-$(FLAVOUR)
 else
-	ifeq ($(strip $(FLAVOUR)),default)
-		DOCKER_TAG = $(VERSION)-$(TAG)
-	else
-		DOCKER_TAG = $(VERSION)-$(FLAVOUR)-$(TAG)
-	endif
+	DOCKER_TAG = $(VERSION)-$(FLAVOUR)-$(TAG)
 endif
 ARCH       = linux/amd64
 
@@ -66,6 +58,21 @@ help:
 	@echo
 	@echo "test [ARCH=...]                          Test built Docker image"
 	@echo
+
+# -------------------------------------------------------------------------------------------------
+#  Overwrite Targets
+# -------------------------------------------------------------------------------------------------
+
+# Append additional target to lint
+lint: lint-readme
+
+.PHONY: lint-readme
+lint-readme:
+	@echo "################################################################################"
+	@echo "# Lint projects in README.md"
+	@echo "################################################################################"
+	./build/update-readme.sh
+	git diff --quiet || { echo "Build Changes"; git diff; git status; false; }
 
 
 # -------------------------------------------------------------------------------------------------
@@ -95,17 +102,5 @@ manifest-push: docker-manifest-push
 #  Test Targets
 # -------------------------------------------------------------------------------------------------
 .PHONY: test
-test: _test-integration
-test: update-readme
-
-.PHONY: _test-integration
-_test-integration:
-	./tests/start-ci.sh $(IMAGE) $(NAME) $(VERSION) $(DOCKER_TAG) $(ARCH)
-
-.PHONY: update-readme
-update-readme:
-	cat "./README.md" \
-		| perl -0 -pe "s/<!-- modules -->.*<!-- \/modules -->/<!-- modules -->\n$$(./tests/get-modules.sh $(IMAGE) $(NAME) $(VERSION) $(DOCKER_TAG) $(ARCH))\n<!-- \/modules -->/s" \
-		> "./README.md.tmp"
-	yes | mv -f "./README.md.tmp" "./README.md"
-	git diff --quiet || { echo "Build Changes"; git diff; git status; false; }
+test:
+	./tests/test.sh $(IMAGE) $(ARCH) $(VERSION) $(DOCKER_TAG)
