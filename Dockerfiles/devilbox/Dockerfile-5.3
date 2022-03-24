@@ -1,0 +1,63 @@
+#--------------------------------------------------------------------------------------------------
+# Default skeleton
+#--------------------------------------------------------------------------------------------------
+
+
+###
+### Base image
+###
+FROM devilbox/php-fpm:5.3-work
+
+
+###
+### Will be populated by Makefile call (e.g. linux/amd64 or linux/arm64)
+###
+ARG ARCH
+
+
+###
+### Labels
+###
+# https://github.com/opencontainers/image-spec/blob/master/annotations.md
+# The following commented labels will be auto-created by the Makefile command.
+#LABEL "org.opencontainers.image.created"=""
+#LABEL "org.opencontainers.image.version"=""
+#LABEL "org.opencontainers.image.revision"=""
+LABEL "maintainer"="cytopia <cytopia@everythingcli.org>"
+LABEL "org.opencontainers.image.authors"="cytopia <cytopia@everythingcli.org>"
+LABEL "org.opencontainers.image.url"="https://github.com/devilbox/docker-php-fpm-community"
+LABEL "org.opencontainers.image.documentation"="https://github.com/devilbox/docker-php-fpm-community"
+LABEL "org.opencontainers.image.source"="https://github.com/devilbox/docker-php-fpm-community"
+LABEL "org.opencontainers.image.vendor"="devilbox"
+LABEL "org.opencontainers.image.licenses"="MIT"
+LABEL "org.opencontainers.image.ref.name"="5.3-community"
+LABEL "org.opencontainers.image.title"="PHP-FPM 5-community"
+LABEL "org.opencontainers.image.description"="PHP-FPM 5.3-community"
+
+
+
+###
+### Default upstream volumes
+###
+VOLUME /shared/backups
+VOLUME /var/log/php
+VOLUME /var/mail
+
+
+###
+### Default upstream ports
+###
+EXPOSE 9000
+
+
+###
+### Default upstream workdir
+###
+WORKDIR /shared/httpd
+
+
+###
+### Default upstream Entrypoint
+###
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+ENTRYPOINT ["/docker-entrypoint.sh"]

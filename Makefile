@@ -27,21 +27,13 @@ TAG        = latest
 NAME       = PHP
 #VERSION    = X.X
 IMAGE      = devilbox/php-fpm-community
-FLAVOUR    = default
+FLAVOUR    = devilbox
 FILE       = Dockerfile-$(VERSION)
 DIR        = Dockerfiles/$(FLAVOUR)
 ifeq ($(strip $(TAG)),latest)
-	ifeq ($(strip $(FLAVOUR)),default)
-		DOCKER_TAG = $(VERSION)
-	else
-		DOCKER_TAG = $(VERSION)-$(FLAVOUR)
-	endif
+	DOCKER_TAG = $(VERSION)-$(FLAVOUR)
 else
-	ifeq ($(strip $(FLAVOUR)),default)
-		DOCKER_TAG = $(VERSION)-$(TAG)
-	else
-		DOCKER_TAG = $(VERSION)-$(FLAVOUR)-$(TAG)
-	endif
+	DOCKER_TAG = $(VERSION)-$(FLAVOUR)-$(TAG)
 endif
 ARCH       = linux/amd64
 
