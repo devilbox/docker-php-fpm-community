@@ -1,0 +1,42 @@
+---
+
+# filename: devilbox_action_branch.yml
+# job-name: devilbox_build
+#
+
+# -------------------------------------------------------------------------------------------------
+# Job Name
+# -------------------------------------------------------------------------------------------------
+name: devilbox_build
+
+
+# -------------------------------------------------------------------------------------------------
+# When to run
+# -------------------------------------------------------------------------------------------------
+on:
+  push:
+    paths:
+      - '.github/workflows/devilbox*.yml'
+      - '!.github/workflows/devilbox_schedule.yml'
+      - 'Dockerfiles/devilbox/**'
+      - '!Dockerfiles/devilbox/README.md'
+
+
+jobs:
+
+  # (1/2) Determine repository params
+  params:
+    uses: ./.github/workflows/devilbox_params.yml
+
+  # (2/2) Build
+  docker:
+    needs: [devilbox_params]
+    uses: devilbox/github-actions/.github/workflows/docker-name-version-flavour-arch.yml@master
+    with:
+      enabled: true
+      can_deploy: ${{ github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/') || startsWith(github.ref, 'refs/heads/release-') }}
+      matrix: ${{ needs.params.outputs.matrix }}
+      refs: ${{ needs.params.outputs.refs }}
+    secrets:
+      dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+      dockerhub_password: ${{ secrets.DOCKERHUB_PASSWORD }}
