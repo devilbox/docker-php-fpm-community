@@ -35,7 +35,7 @@ for d in "${CWD}/../Dockerfiles/"*; do
 	LINE="${LINE}$( printf "| %-48s"  ":octocat: [${CREDIT_GITHUB}] (${CREDIT_NAME})" )"
 	LINE="${LINE}$( printf "| %-46s"  "![${CREDIT_PROJECT}_build]<br/>![${CREDIT_PROJECT}_nightly]" )"
 	LINE="${LINE}$( printf "| %-38s"  ":computer: amd64<br/>:computer: arm64" )"
-	LINE="${LINE}$( printf "| %-28s"  "\`devilbox-<V>\`" )"
+	LINE="${LINE}$( printf "| %-28s"  "\`<V>-devilbox\`" )"
 	LINE="${LINE} |"
 	TABLE="$( printf "${TABLE}\n%s" "${LINE}" )"
 
