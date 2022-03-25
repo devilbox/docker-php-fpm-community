@@ -10,7 +10,7 @@ CWD="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
 
 VALID_PROJECT="[-_a-zA-Z0-9]+"
 
-PHP_VERSIONS=("5.3" "5.4" "5.5" "5.6" "7.0" "7.1" "7.2" "7.3" "7.4" "8.0" "8.1")
+PHP_VERSIONS=("5.3" "5.4" "5.5" "5.6" "7.0" "7.1" "7.2" "7.3" "7.4" "8.0" "8.1" "8.2")
 
 
 echo "================================================================================"
@@ -94,6 +94,18 @@ for version in "${PHP_VERSIONS[@]}"; do
 	sed -i'' "s/__MAINTAINER_NAME__/${MAINTAINER_NAME}/g" "${CWD}/../Dockerfiles/${PROJECT}/Dockerfile-${version}"
 	sed -i'' "s/__MAINTAINER_MAIL__/${MAINTAINER_MAIL}/g" "${CWD}/../Dockerfiles/${PROJECT}/Dockerfile-${version}"
 done
+
+
+#---------------------------------------------------------------------------------------------------
+# Generate project tests
+#---------------------------------------------------------------------------------------------------
+
+###
+### Copy test.sh
+###
+mkdir "${CWD}/../Dockerfiles/${PROJECT}/tests"
+mkdir "${CWD}/../Dockerfiles/${PROJECT}/tests/work"
+cp "${CWD}/skeleton/test.sh" "${CWD}/../Dockerfiles/${PROJECT}/tests/test.sh"
 
 
 #---------------------------------------------------------------------------------------------------

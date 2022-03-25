@@ -120,7 +120,17 @@ manifest-push: docker-manifest-push
 #  Test Targets
 # -------------------------------------------------------------------------------------------------
 .PHONY: test
-test:
+test: _test-custom
+test: _test-default
+
+.PHONY: _test-custom
+_test-custom: check-version-is-set
+_test-custom:
+	./Dockerfiles/$(FLAVOUR)/tests/test.sh $(IMAGE) $(ARCH) $(VERSION) $(DOCKER_TAG)
+
+.PHONY: _test-default
+_test-default: check-version-is-set
+_test-default:
 	./tests/test.sh $(IMAGE) $(ARCH) $(VERSION) $(DOCKER_TAG)
 
 
@@ -131,3 +141,21 @@ test:
 .PHONY: create-project
 create-project:
 	./build/generate-project.sh
+
+
+
+# -------------------------------------------------------------------------------------------------
+# HELPER TARGETS
+# -------------------------------------------------------------------------------------------------
+
+###
+### Ensures the VERSION variable is set
+###
+.PHONY: check-version-is-set
+check-version-is-set:
+	@if [ "$(VERSION)" = "" ]; then \
+		echo "This make target requires the VERSION variable to be set."; \
+		echo "make <target> VERSION="; \
+		echo "Exiting."; \
+		exit 1; \
+	fi

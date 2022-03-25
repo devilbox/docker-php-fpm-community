@@ -14,7 +14,7 @@ Devilbox PHP-FPM community maintained docker images.
 | <a href="https://hub.docker.com/r/devilbox/php-fpm-community"><img height="82px" src="http://dockeri.co/image/devilbox/php-fpm-community" /></a> | <a href="https://github.com/cytopia/devilbox" ><img height="82px" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_banner/cytopia/01/png/banner_256_trans.png" /></a> |
 
 
-## Projects
+## :wrench: Projects
 
 Find the currently available projects here. Click on the project for corresponding docker tags and more details.
 
@@ -31,11 +31,6 @@ Find the currently available projects here. Click on the project for correspondi
 > <sup> :information_source: `<V>` in the Docker tag above stands for the PHP version. E.g.: `5.4` or `8.1`, etc</sup>
 <!-- PROJECTS_END -->
 
-You can create your own project via:
-```shell
-make create-project
-```
-
 
 ## :computer: Build
 
@@ -51,7 +46,15 @@ make build VERSION=5.5 FLAVOUR=devilbox ARCH=linux/arm64
 
 ## :octocat: Contributing
 
-See **[Contributing guidelines](CONTRIBUTING.md)** for how to update Docker images or create your own flavours.
+You can easily and automatically generate your own project via:
+
+```shell
+make create-project
+```
+
+See **[Contributing guidelines](CONTRIBUTING.md)** for how to best update Docker images in this repository or how to create your own project and have it bundled<sup>[1]</sup> with this repository.
+
+> <sup>[1] Every bundled project in this repository has automated CI pipelines including nightly builds.</sup>
 
 
 ## :page_facing_up: License
