@@ -14,7 +14,7 @@ Devilbox PHP-FPM community maintained docker images.
 | <a href="https://hub.docker.com/r/devilbox/php-fpm-community"><img height="82px" src="http://dockeri.co/image/devilbox/php-fpm-community" /></a> | <a href="https://github.com/cytopia/devilbox" ><img height="82px" src="https://raw.githubusercontent.com/devilbox/artwork/master/submissions_banner/cytopia/01/png/banner_256_trans.png" /></a> |
 
 
-## Projects
+## :wrench: Projects
 
 Find the currently available projects here. Click on the project for corresponding docker tags and more details.
 
