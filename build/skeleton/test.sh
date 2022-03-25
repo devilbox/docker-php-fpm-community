@@ -17,6 +17,17 @@ TAG="${4}"
 IFS=$'\n'
 
 TESTS="$( find "${CWD}" -regex "${CWD}/work/.+\.sh" | sort -u )"
+
+if [ -z "${TESTS}" ]; then
+	echo
+	echo
+	echo "Error, no test cases have been defined in Dockerfiles/<project>/tests/work/*.sh"
+	echo
+	echo "Add shell scripts ending by '.sh' into Dockerfiles/<project>/tests/work/ that do some meaningful testing"
+	echo
+	echo
+	exit 1
+fi
 for t in ${TESTS}; do
 	printf "\n\n\033[0;33m%s\033[0m\n" "################################################################################"
 	printf "\033[0;33m%s %s\033[0m\n"  "#" "[${VERSION}-${FLAVOUR}] (${ARCH})"
