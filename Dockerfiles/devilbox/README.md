@@ -7,7 +7,7 @@
 This is the Devilbox community reference image. Feel free to enhance it or use it as reference for creating your own images.
 
 
-## Maintainer
+## :busts_in_silhouette: Maintainer
 
 * :octocat: [cytopia](https://github.com/cytopia) (cytopia)
 
