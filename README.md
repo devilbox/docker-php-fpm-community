@@ -21,7 +21,7 @@ Find the currently available projects here. Click on the project for correspondi
 <!-- PROJECTS_START -->
 | Project                               | Author                                          | build                                         | Architecture                          | Docker Tag                   |
 |---------------------------------------|-------------------------------------------------|-----------------------------------------------|---------------------------------------|------------------------------|
-| :file_folder: [devilbox/]             | :octocat: [cytopia] (cytopia)                   | ![devilbox_build]<br/>![devilbox_nightly]     | :computer: amd64<br/>:computer: arm64 | `devilbox-<V>`               |
+| :file_folder: [devilbox/]             | :octocat: [cytopia] (cytopia)                   | ![devilbox_build]<br/>![devilbox_nightly]     | :computer: amd64<br/>:computer: arm64 | `<V>-devilbox`               |
 
 
 [devilbox/]: Dockerfiles/devilbox
