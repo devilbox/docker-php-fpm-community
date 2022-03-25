@@ -19,15 +19,16 @@ Devilbox PHP-FPM community maintained docker images.
 Find the currently available projects here. Click on the project for corresponding docker tags and more details.
 
 <!-- PROJECTS_START -->
-| Project                                 | Author                                            | build                                         | Architecture                                   |
-|-----------------------------------------|---------------------------------------------------|-----------------------------------------------|------------------------------------------------|
-| :file_folder: [devilbox/]               | :octocat: [cytopia] (cytopia)                     | ![devilbox_build]<br/>![devilbox_nightly]     | :computer: amd64<br/>:computer: arm64          |
+| Project                               | Author                                          | build                                         | Architecture                          | Docker Tag                   |
+|---------------------------------------|-------------------------------------------------|-----------------------------------------------|---------------------------------------|------------------------------|
+| :file_folder: [devilbox/]             | :octocat: [cytopia] (cytopia)                   | ![devilbox_build]<br/>![devilbox_nightly]     | :computer: amd64<br/>:computer: arm64 | `devilbox-<V>`               |
 
 
 [devilbox/]: Dockerfiles/devilbox
 [cytopia]: https://github.com/cytopia
 [devilbox_build]: https://github.com/devilbox/docker-php-fpm-community/workflows/devilbox_build/badge.svg
 [devilbox_nightly]: https://github.com/devilbox/docker-php-fpm-community/workflows/devilbox_nightly/badge.svg
+> <sup> :information_source: `<V>` in the Docker tag above stands for the PHP version. E.g.: `5.4` or `8.1`, etc</sup>
 <!-- PROJECTS_END -->
 
 You can create your own project via:

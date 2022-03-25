@@ -6,7 +6,7 @@
 
 Add your project description here
 
-## Maintainer
+## :busts_in_silhouette: Maintainer
 
 * :octocat: [__GITHUB_NAME__](https://github.com/__GITHUB_NAME__) (__MAINTAINER_NAME__)
 
