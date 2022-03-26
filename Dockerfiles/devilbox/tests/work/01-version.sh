@@ -6,7 +6,7 @@ set -o pipefail
 
 IMAGE="${1}"
 ARCH="${2}"
-FLAVOUR="${3}"
+#FLAVOUR="${3}"
 TAG="${4}"
 
 

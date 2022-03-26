@@ -38,8 +38,8 @@ endif
 ARCH       = linux/amd64
 
 # Makefile.lint overwrites
-FL_IGNORES  = .git/,.github/
-SC_IGNORES  = .git/,.github/
+FL_IGNORES  = .git/,.github/,tests/docker-php-fpm/
+SC_IGNORES  = .git/,.github/,tests/docker-php-fpm/
 
 
 # -------------------------------------------------------------------------------------------------
@@ -64,9 +64,9 @@ help:
 # -------------------------------------------------------------------------------------------------
 
 # Append additional target to lint
-lint: lint-actions
 lint: lint-codeowners
 lint: lint-readme
+lint: lint-actions
 
 .PHONY: lint-actions
 lint-actions:

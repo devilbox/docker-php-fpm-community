@@ -3,6 +3,7 @@ extends: default
 
 ignore: |
   .yamllint
+  tests/docker-php-fpm
 
 
 rules:
