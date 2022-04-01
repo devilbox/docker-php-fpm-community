@@ -62,6 +62,7 @@ get_modules() {
 
 	# Process module string into correct format for README.md
 	PHP_MODULES="$( echo "${PHP_MODULES}" | grep -v '^Core' )"  # Remove 'Core'
+	# shellcheck disable=SC2001
 	PHP_MODULES="$( echo "${PHP_MODULES}" | sed 's/^\[.*//g' )" # Remove PHP Modules headlines
 	PHP_MODULES="${ALL_MODULES}${PHP_MODULES}"                  # Append all available modules
 	PHP_MODULES="$( echo "${PHP_MODULES}" | sort -fu )"         # Unique
@@ -69,8 +70,11 @@ get_modules() {
 	PHP_MODULES="$( echo "${PHP_MODULES}" | tr '\r\n' ',' )"    # Newlines to commas
 	PHP_MODULES="$( echo "${PHP_MODULES}" | tr '\n' ',' )"      # Newlines to commas
 	PHP_MODULES="$( echo "${PHP_MODULES}" | tr '\r' ',' )"      # Newlines to commas
+	# shellcheck disable=SC2001
 	PHP_MODULES="$( echo "${PHP_MODULES}" | sed	's/^M/,/g' )"   # Newlines to commas
+	# shellcheck disable=SC2001
 	PHP_MODULES="$( echo "${PHP_MODULES}" | sed 's/,,/,/g' )"   # Remove PHP Modules headlines
+	# shellcheck disable=SC2001
 	PHP_MODULES="$( echo "${PHP_MODULES}" | sed 's/,/\n/g' )"   # Back to newlines
 	PHP_MODULES="$( echo "${PHP_MODULES}" | sort -fu )"         # Unique
 	PHP_MODULES="$( echo "${PHP_MODULES}" | sed '/^\s*$/d' )"   # Remove empty lines
