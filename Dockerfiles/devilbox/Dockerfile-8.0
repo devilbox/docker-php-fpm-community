@@ -6,7 +6,7 @@
 ###
 ### Base image
 ###
-FROM devilbox/php-fpm:8.0-work
+FROM devilbox/php-fpm:8.0-work-release-0.138
 
 
 ###
