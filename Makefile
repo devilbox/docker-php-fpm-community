@@ -97,9 +97,11 @@ lint-readme:
 #  Docker Targets
 # -------------------------------------------------------------------------------------------------
 .PHONY: build
+build: ARGS+=--build-arg ARCH=$(ARCH)
 build: docker-arch-build
 
 .PHONY: rebuild
+rebuild: ARGS+=--build-arg ARCH=$(ARCH)
 rebuild: docker-arch-rebuild
 
 .PHONY: push
