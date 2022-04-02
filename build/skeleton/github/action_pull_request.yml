@@ -16,11 +16,12 @@ name: __PROJECT___build
 on:
   pull_request:
     paths:
-      - 'tests/**'
       - '.github/workflows/__PROJECT__*.yml'
       - '!.github/workflows/__PROJECT___schedule.yml'
       - 'Dockerfiles/__PROJECT__/**'
-      - '!Dockerfiles/__PROJECT__/README.md'
+      - '!Dockerfiles/__PROJECT__/*.md'
+      - 'tests/**'
+      - 'Makefile'
 
 
 jobs:
