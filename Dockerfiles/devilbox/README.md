@@ -4,7 +4,7 @@
 [![nightly](https://github.com/devilbox/docker-php-fpm-community/workflows/devilbox_nightly/badge.svg)](https://github.com/devilbox/docker-php-fpm-community/actions?workflow=devilbox_nightly)
 
 
-This is the Devilbox community reference image. Feel free to enhance it or use it as reference for creating your own images.
+This is the Devilbox community reference image. Feel free to get inspired by the setup and create your own images.
 
 
 ## :busts_in_silhouette: Maintainer
