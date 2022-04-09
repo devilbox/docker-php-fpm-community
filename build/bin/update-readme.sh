@@ -29,11 +29,13 @@ for d in "${CWD}/../Dockerfiles/"*; do
 	CREDIT_NAME="$(    echo "${CREDITS}" | grep '^name='    | awk -F'=' '{$1=""; print $0}' | sed 's/^ //g' )"
 	#CREDIT_MAIL="$(    echo "${CREDITS}" | grep '^mail='    | awk -F'=' '{$1=""; print $0}' | sed 's/^ //g' )"
 
+	ACTION_LNK_BUILD="https://github.com/devilbox/docker-php-fpm-community/actions/workflows/${CREDIT_PROJECT}_action.yml"
+	ACTION_LNK_NIGHTLY="https://github.com/devilbox/docker-php-fpm-community/actions/workflows/${CREDIT_PROJECT}_action_schedule.yml"
 	# Build Table
 	LINE=""
 	LINE="${LINE}$( printf "| %-38s"  ":file_folder: [${CREDIT_PROJECT}/]" )"
 	LINE="${LINE}$( printf "| %-48s"  ":octocat: [${CREDIT_GITHUB}] (${CREDIT_NAME})" )"
-	LINE="${LINE}$( printf "| %-46s"  "![${CREDIT_PROJECT}_build]<br/>![${CREDIT_PROJECT}_nightly]" )"
+	LINE="${LINE}$( printf "| %-46s"  "[![${CREDIT_PROJECT}_build]](${ACTION_LNK_BUILD})<br/>[![${CREDIT_PROJECT}_nightly]](${ACTION_LNK_NIGHTLY})" )"
 	LINE="${LINE}$( printf "| %-38s"  ":computer: amd64<br/>:computer: arm64" )"
 	LINE="${LINE}$( printf "| %-28s"  "\`<V>-devilbox\`" )"
 	LINE="${LINE} |"
