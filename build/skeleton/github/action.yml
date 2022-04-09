@@ -1,6 +1,6 @@
 ---
 
-# filename: __PROJECT___action_branch.yml
+# filename: __PROJECT___action.yml
 # job-name: __PROJECT___build
 #
 
@@ -14,6 +14,7 @@ name: __PROJECT___build
 # When to run
 # -------------------------------------------------------------------------------------------------
 on:
+  # Push or pull_request will be determined in jobs.configure.enabled
   push:
     paths:
       - '.github/workflows/__PROJECT__*.yml'
@@ -22,6 +23,16 @@ on:
       - '!Dockerfiles/__PROJECT__/*.md'
       - 'tests/**'
       - 'Makefile'
+  pull_request:
+    paths:
+      - '.github/workflows/__PROJECT__*.yml'
+      - '!.github/workflows/__PROJECT___schedule.yml'
+      - 'Dockerfiles/__PROJECT__/**'
+      - '!Dockerfiles/__PROJECT__/*.md'
+      - 'tests/**'
+      - 'Makefile'
+  # Dispatch: allows for manual trigger via GH UI
+  workflow_dispatch:
 
 
 jobs:
@@ -35,7 +46,7 @@ jobs:
     needs: [params]
     uses: devilbox/github-actions/.github/workflows/docker-name-version-flavour-arch.yml@master
     with:
-      enabled: true
+      enabled: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && (github.event.pull_request.user.login != 'cytopia')) }}
       can_deploy: ${{ github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/') || startsWith(github.ref, 'refs/heads/release-') }}
       matrix: ${{ needs.params.outputs.matrix }}
       refs: ${{ needs.params.outputs.refs }}

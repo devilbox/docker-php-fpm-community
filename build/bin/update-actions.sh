@@ -30,16 +30,14 @@ for d in "${CWD}/../Dockerfiles/"*; do
 	###
 	### Copy GitHub Actions
 	###
-	cp "${CWD}/skeleton/github/action_branch.yml"       "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action_branch.yml"
-	cp "${CWD}/skeleton/github/action_pull_request.yml" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action_pull_request.yml"
-	cp "${CWD}/skeleton/github/action_schedule.yml"     "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action_schedule.yml"
-	cp "${CWD}/skeleton/github/params.yml"              "${CWD}/../.github/workflows/${CREDIT_PROJECT}_params.yml"
+	cp "${CWD}/skeleton/github/action.yml"          "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action.yml"
+	cp "${CWD}/skeleton/github/action_schedule.yml" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action_schedule.yml"
+	cp "${CWD}/skeleton/github/params.yml"          "${CWD}/../.github/workflows/${CREDIT_PROJECT}_params.yml"
 
 	###
 	### Set placeholder in GitHub Actions
 	###
-	sed -i'' "s/__PROJECT__/${CREDIT_PROJECT}/g" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action_branch.yml"
-	sed -i'' "s/__PROJECT__/${CREDIT_PROJECT}/g" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action_pull_request.yml"
+	sed -i'' "s/__PROJECT__/${CREDIT_PROJECT}/g" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action.yml"
 	sed -i'' "s/__PROJECT__/${CREDIT_PROJECT}/g" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action_schedule.yml"
 	sed -i'' "s/__PROJECT__/${CREDIT_PROJECT}/g" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_params.yml"
 done
