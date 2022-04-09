@@ -40,7 +40,12 @@ LABEL "org.opencontainers.image.description"="PHP-FPM 5.3-community"
 #--------------------------------------------------------------------------------------------------
 
 RUN set -eux \
-	&& true
+	&& if [ "$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)" = "arm64" ]; then \
+		printf '#!/bin/sh\necho "not available"\n' > /usr/local/bin/ansible; \
+		chmod +x /usr/local/bin/ansible; \
+	else \
+		pip install ansible; \
+	fi
 
 
 #--------------------------------------------------------------------------------------------------
