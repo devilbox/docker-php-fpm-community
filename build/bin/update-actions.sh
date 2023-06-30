@@ -37,7 +37,7 @@ for d in "${CWD}/../Dockerfiles/"*; do
 	###
 	### Set placeholder in GitHub Actions
 	###
-	sed -i'' "s/__PROJECT__/${CREDIT_PROJECT}/g" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action.yml"
-	sed -i'' "s/__PROJECT__/${CREDIT_PROJECT}/g" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action_schedule.yml"
-	sed -i'' "s/__PROJECT__/${CREDIT_PROJECT}/g" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_params.yml"
+	sed -i '' "s/__PROJECT__/${CREDIT_PROJECT}/g" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action.yml"
+	sed -i '' "s/__PROJECT__/${CREDIT_PROJECT}/g" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_action_schedule.yml"
+	sed -i '' "s/__PROJECT__/${CREDIT_PROJECT}/g" "${CWD}/../.github/workflows/${CREDIT_PROJECT}_params.yml"
 done
