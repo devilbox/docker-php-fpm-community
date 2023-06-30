@@ -91,8 +91,8 @@ done
 ### Set placeholders in Dockerfiles
 ###
 for version in "${PHP_VERSIONS[@]}"; do
-	sed -i'' "s/__MAINTAINER_NAME__/${MAINTAINER_NAME}/g" "${CWD}/../Dockerfiles/${PROJECT}/Dockerfile-${version}"
-	sed -i'' "s/__MAINTAINER_MAIL__/${MAINTAINER_MAIL}/g" "${CWD}/../Dockerfiles/${PROJECT}/Dockerfile-${version}"
+	sed -i '' "s/__MAINTAINER_NAME__/${MAINTAINER_NAME}/g" "${CWD}/../Dockerfiles/${PROJECT}/Dockerfile-${version}"
+	sed -i '' "s/__MAINTAINER_MAIL__/${MAINTAINER_MAIL}/g" "${CWD}/../Dockerfiles/${PROJECT}/Dockerfile-${version}"
 done
 
 
@@ -116,9 +116,9 @@ cp "${CWD}/skeleton/test.sh" "${CWD}/../Dockerfiles/${PROJECT}/tests/test.sh"
 ### Copy README.md
 ###
 cp "${CWD}/skeleton/README.md" "${CWD}/../Dockerfiles/${PROJECT}/README.md"
-sed -i'' "s/__PROJECT__/${PROJECT}/g"                 "${CWD}/../Dockerfiles/${PROJECT}/README.md"
-sed -i'' "s/__GITHUB_NAME__/${GITHUB_NAME}/g"         "${CWD}/../Dockerfiles/${PROJECT}/README.md"
-sed -i'' "s/__MAINTAINER_NAME__/${MAINTAINER_NAME}/g" "${CWD}/../Dockerfiles/${PROJECT}/README.md"
+sed -i '' "s/__PROJECT__/${PROJECT}/g"                 "${CWD}/../Dockerfiles/${PROJECT}/README.md"
+sed -i '' "s/__GITHUB_NAME__/${GITHUB_NAME}/g"         "${CWD}/../Dockerfiles/${PROJECT}/README.md"
+sed -i '' "s/__MAINTAINER_NAME__/${MAINTAINER_NAME}/g" "${CWD}/../Dockerfiles/${PROJECT}/README.md"
 
 
 #---------------------------------------------------------------------------------------------------
